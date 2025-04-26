@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,13 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="flex flex-col gap-6">
+        <form
+          className="flex flex-col gap-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setUser({ name: "Marry Doe", email: "marry@gmail.com" });
+          }}
+        >
           <div>
             <label className="block text-sm text-gray-700 mb-1">
               Email address
@@ -43,12 +50,14 @@ const Login = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full py-3 bg-[#6C25FF] hover:bg-[#5a1fd9] text-white font-semibold rounded-md transition"
-          >
-            Login
-          </button>
+          <Link to={"/account-settings"}>
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#6C25FF] hover:bg-[#5a1fd9] text-white font-semibold rounded-md transition"
+            >
+              Login
+            </button>
+          </Link>
         </form>
       </div>
     </div>
